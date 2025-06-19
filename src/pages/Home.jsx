@@ -1,6 +1,39 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
+    const [meetCode, setMeetCode] = useState('')
+    const [debounce, setDebounce] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const navigate = useNavigate()
+
+    const handleMeet = () => {
+        if (meetCode) {
+            setErrorMessage('')
+            navigate(`/room/${meetCode}`)
+        } else {
+            setErrorMessage('Error: enter the code...')
+        }
+    }
+
+    useEffect(() => {
+        const clearWork = setTimeout(() => {
+            setDebounce(meetCode)
+            setErrorMessage('')
+        }, 400)
+
+        return () => {
+            clearTimeout(clearWork)
+        }
+    }, [meetCode])
+
+    useEffect(() => {
+        if (debounce) {
+            console.log(debounce)
+        }
+    }, [debounce])
+
     return (
         <>
             <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
@@ -58,12 +91,17 @@ const Home = () => {
                                                 type="text"
                                                 placeholder="XXX-XXX-XXX"
                                                 className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-300 text-lg font-mono focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                                                maxLength={11}
+                                                value={meetCode}
+                                                onChange={(e) => { setMeetCode(e.target.value) }}
                                             />
+                                            {errorMessage && (
+                                                <p className="text-sm text-red-400 mt-1">{errorMessage}</p>
+                                            )}
                                         </div>
 
                                         <button
-                                            className="w-full py-3 px-6 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center space-x-2 bg-gray-600/50 text-gray-400 hover:bg-blue-500 cursor-pointer hover:text-white"
+                                            onClick={handleMeet}
+                                            className={`w-full py-3 px-6 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center space-x-2 ${debounce ? ('bg-blue-500 text-white') : ('bg-gray-600/50')} text-gray-400 cursor-pointer`}
                                         >
                                             <span>Join Meeting</span>
                                         </button>
