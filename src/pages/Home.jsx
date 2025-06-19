@@ -84,9 +84,9 @@ const Home = () => {
 
                                     <div className="space-y-4">
                                         <div>
-                                            <label className="block text-sm font-medium text-blue-200 mb-2">
+                                            <p className="block text-sm font-medium text-white mb-2">
                                                 Enter Room Code
-                                            </label>
+                                            </p>
                                             <input
                                                 type="text"
                                                 placeholder="XXX-XXX-XXX"
