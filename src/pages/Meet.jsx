@@ -1,4 +1,4 @@
-import React, { use } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt'
 
@@ -15,12 +15,12 @@ const Meet = () => {
             container: element,
             sharedLinks: [
                 {
-                  name: 'Meet Link',
-                  url:
-                   window.location.protocol + '//' + 
-                   window.location.host + window.location.pathname +
-                    '?roomID=' +
-                    meetcode,
+                    name: 'Meet Link',
+                    url:
+                        window.location.protocol + '//' +
+                        window.location.host + window.location.pathname +
+                        '?roomID=' +
+                        meetcode,
                 },
             ],
             scenario: {
@@ -32,10 +32,11 @@ const Meet = () => {
     return (
         <>
             <div
-            className='bg-gradient-to-br from-blue-50 via-white to-purple-50'
-                ref={meetingRoom}
-                style={{ width: '100vw', height: '100vh' }}
-            ></div>
+                className='min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50'
+            >
+                <div className='' ref={meetingRoom} style={{width: "100vw", height: "100vh"}}>
+                </div>
+            </div>
         </>
     )
 }

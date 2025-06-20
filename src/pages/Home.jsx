@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Video } from 'lucide-react'
 
 const Home = () => {
     const [meetCode, setMeetCode] = useState('')
@@ -47,23 +48,23 @@ const Home = () => {
                     <header className="px-6 py-8">
                         <div className="max-w-7xl mx-auto flex items-center justify-between">
                             <div className="flex items-center space-x-3">
-                                <h1 className="text-2xl font-bold text-white">MeetMate</h1>
+                                <h1 className="text-2xl font-bold text-white cursor-pointer">MeetMate</h1>
                             </div>
-                            <div className="hidden md:flex items-center space-x-6 text-sm">
-                                <div className="flex items-center space-x-2 text-blue-200">
+                            <div className="flex md:flex items-center space-x-6 text-sm">
+                                <div className="flex items-center space-x-2 cursor-pointer text-blue-200">
                                     <span>Secure</span>
                                 </div>
-                                <div className="flex items-center space-x-2 text-blue-200">
+                                <div className="flex items-center space-x-2 cursor-pointer text-blue-200">
                                     <span>Instant</span>
                                 </div>
                             </div>
                         </div>
                     </header>
 
-                    <main className="flex-1 px-6 py-12">
+                    <div className="flex-1 px-6 py-12 mt-15">
                         <div className="max-w-4xl mx-auto">
                             <div className="text-center mb-12">
-                                <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                                <h2 className="text-3xl md:text-6xl font-bold text-white mb-6 leading-tight">
                                     Connect Collaborate
                                     <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent block">
                                         Create Together
@@ -77,7 +78,8 @@ const Home = () => {
                             <div className="flex justify-center items-center gap-8 mb-16">
                                 <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 transition-all duration-300">
                                     <div className="flex items-center space-x-3 mb-6">
-                                        <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                                        <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex text-gray-200 items-center justify-center">
+                                            <Video size={32} className='ml-[2px]' />
                                         </div>
                                         <h3 className="text-2xl font-semibold text-white">Join Meeting</h3>
                                     </div>
@@ -109,7 +111,7 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                    </main>
+                    </div>
                 </div>
             </div>
         </>
