@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { Video } from 'lucide-react'
 
 const Home = () => {
@@ -10,11 +10,18 @@ const Home = () => {
     const navigate = useNavigate()
 
     const handleMeet = () => {
-        if (meetCode) {
+        if (meetCode && localStorage.getItem('userToken')) {
             setErrorMessage('')
             navigate(`/room/${meetCode}`)
-        } else {
-            setErrorMessage('Error: enter the code...')
+        } else if(!localStorage.getItem('userToken')) {
+            setErrorMessage(
+                <>
+                    Please <Link to="/login" className="text-blue-600 underline mr-1">login</Link> first to join a meeting.
+                </>
+            );
+        }
+        else {
+            setErrorMessage('Error: enter the code....')
         }
     }
 
